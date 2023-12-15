@@ -195,7 +195,9 @@ def main():
                 yaxis_title="Price",
                 hoverlabel_font=dict(size=16),
                 height=550,  # Adjust the height as needed
-                width=400    # Adjust the width as needed
+                width=400,    # Adjust the width as needed
+                dragmode='pan'  # Enable pan
+                
             )
 
             st.plotly_chart(fig_monthly)
@@ -254,7 +256,8 @@ def main():
                 yaxis_title="Price",
                 hoverlabel_font=dict(size=16),
                 height=550,  # Adjust the height as needed
-                width=400    # Adjust the width as needed
+                width=400,    # Adjust the width as needed
+                dragmode='pan'  # Enable pan
             )
 
             st.plotly_chart(fig_weekly)
