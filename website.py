@@ -181,7 +181,6 @@ def main():
                 x=df_monthly.index,
                 y=df_monthly['Price(per kg)'],
                 mode='lines+markers',
-                ',
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
