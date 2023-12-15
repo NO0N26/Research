@@ -180,7 +180,8 @@ def main():
             fig_monthly.add_trace(go.Scatter(
                 x=df_monthly.index,
                 y=df_monthly['Price(per kg)'],
-                mode='lines',
+                mode='lines+markers
+                ',
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
@@ -242,7 +243,7 @@ def main():
             fig_weekly.add_trace(go.Scatter(
                 x=df_weekly.index,
                 y=df_weekly['Price(per kg)'],
-                mode='lines',
+                mode='lines+markers',
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
