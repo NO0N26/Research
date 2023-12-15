@@ -64,7 +64,8 @@ def display_line_chart(df, crop_name, selected_year):
         yaxis_title="Price",
         hoverlabel_font=dict(size=16),
         height=550,  # Adjust the height as needed
-        width=400    # Adjust the width as needed
+        width=400,    # Adjust the width as needed
+        dragmode='pan',  # Enable dragging
     )
 
     st.plotly_chart(fig)
@@ -92,7 +93,8 @@ def main():
 
         # Additional code based on selected_crop
         if selected_crop in ['Carrot', 'Cassava', 'Gabi', 'Potato', 'Sweet Potato']:
-            file_path = f'datasets/{selected_crop}.xlsx'
+            file_path = f'C:/Users/Dennis C. Orozco jr/Desktop/research website/datasets/{selected_crop}.xlsx'
+
             df = process_data(file_path)
 
             # Display DataFrame with additional columns and modified headers
@@ -142,7 +144,7 @@ def main():
     # Additional code based on selected_interval
     if selected_interval == 'Monthly (12 months)':
         # Load the "monthly" sheet from the Excel file
-        monthly_sheet_path = f'datasets/{selected_crop}.xlsx'
+        monthly_sheet_path = f'C:/Users/Dennis C. Orozco jr/Desktop/research website/datasets/{selected_crop}.xlsx'
         df_monthly = pd.read_excel(monthly_sheet_path, sheet_name='monthly')
 
         # Reset index and format date without the time part
@@ -200,7 +202,7 @@ def main():
 
     elif selected_interval == 'Weekly (10 weeks)':
         # Load the "weekly" sheet from the Excel file
-        weekly_sheet_path = f'datasets/{selected_crop}.xlsx'
+        weekly_sheet_path = f'C:/Users/Dennis C. Orozco jr/Desktop/research website/datasets/{selected_crop}.xlsx'
         df_weekly = pd.read_excel(weekly_sheet_path, sheet_name='weekly')
 
         # Reset index and format date without the time part
@@ -242,9 +244,10 @@ def main():
                               "<b>Price:</b> ₱%{y:.2f}<br>"
                               "<b>Percentage Change:</b> %{customdata}<br>",
                 customdata=df_weekly['Percentage Change'],
-                hoverlabel_font_color=['green' if val > 0 else 'red' for val in df_weekly['Price(per kg)'].pct_change()]
+                hoverlabel_font_color=['green' if val > 0 else 'red' for val in df_weekly['Price(per kg)'].pct_change()],
             ))
 
+            
             # Update layout to add axis labels
             fig_weekly.update_layout(
                 xaxis_title="Date",
