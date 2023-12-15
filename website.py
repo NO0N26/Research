@@ -93,7 +93,7 @@ def main():
 
         # Additional code based on selected_crop
         if selected_crop in ['Carrot', 'Cassava', 'Gabi', 'Potato', 'Sweet Potato']:
-            file_path = f'C:/Users/Dennis C. Orozco jr/Desktop/research website/datasets/{selected_crop}.xlsx'
+            file_path = f'datasets/{selected_crop}.xlsx'
 
             df = process_data(file_path)
 
@@ -144,7 +144,7 @@ def main():
     # Additional code based on selected_interval
     if selected_interval == 'Monthly (12 months)':
         # Load the "monthly" sheet from the Excel file
-        monthly_sheet_path = f'C:/Users/Dennis C. Orozco jr/Desktop/research website/datasets/{selected_crop}.xlsx'
+        monthly_sheet_path = f'datasets/{selected_crop}.xlsx'
         df_monthly = pd.read_excel(monthly_sheet_path, sheet_name='monthly')
 
         # Reset index and format date without the time part
@@ -202,7 +202,7 @@ def main():
 
     elif selected_interval == 'Weekly (10 weeks)':
         # Load the "weekly" sheet from the Excel file
-        weekly_sheet_path = f'C:/Users/Dennis C. Orozco jr/Desktop/research website/datasets/{selected_crop}.xlsx'
+        weekly_sheet_path = f'datasets/{selected_crop}.xlsx'
         df_weekly = pd.read_excel(weekly_sheet_path, sheet_name='weekly')
 
         # Reset index and format date without the time part
