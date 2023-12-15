@@ -180,7 +180,7 @@ def main():
             fig_monthly.add_trace(go.Scatter(
                 x=df_monthly.index,
                 y=df_monthly['Price(per kg)'],
-                mode='lines',
+                mode='lines+markers',  # Add markers to the line
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
@@ -197,7 +197,18 @@ def main():
                 height=550,  # Adjust the height as needed
                 width=400,    # Adjust the width as needed
                 dragmode='pan'  # Enable pan
-                
+            )
+
+            st.plotly_chart(fig_monthly)
+
+            # Update layout to add axis labels
+            fig_monthly.update_layout(
+                xaxis_title="Date",
+                yaxis_title="Price",
+                hoverlabel_font=dict(size=16),
+                height=550,  # Adjust the height as needed
+                width=400,    # Adjust the width as needed
+                dragmode='pan'  # Enable pan
             )
 
             st.plotly_chart(fig_monthly)
@@ -240,11 +251,11 @@ def main():
             fig_weekly.add_trace(go.Scatter(
                 x=df_weekly.index,
                 y=df_weekly['Price(per kg)'],
-                mode='lines',
+                mode='lines+markers',  # Add markers to the line
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
-                              "<b>Percentage Change:</b> %{customdata}<br>",
+                            "<b>Percentage Change:</b> %{customdata}<br>",
                 customdata=df_weekly['Percentage Change'],
                 hoverlabel_font_color=['green' if val > 0 else 'red' for val in df_weekly['Price(per kg)'].pct_change()],
             ))
