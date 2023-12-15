@@ -171,7 +171,7 @@ def main():
                 subset=['Percentage Change']
             )
 
-            st.dataframe(df_monthly_styled, width=320, height=385)
+            st.table(df_monthly_styled)
 
         # Create a line chart for the monthly forecast in col2
         with col2:
@@ -180,7 +180,7 @@ def main():
             fig_monthly.add_trace(go.Scatter(
                 x=df_monthly.index,
                 y=df_monthly['Price(per kg)'],
-                mode='lines+markers',  # Add markers to the line
+                mode='lines',
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
@@ -188,18 +188,6 @@ def main():
                 customdata=df_monthly['Percentage Change'],
                 hoverlabel_font_color=['green' if val > 0 else 'red' for val in df_monthly['Price(per kg)'].pct_change()]
             ))
-
-            # Update layout to add axis labels
-            fig_monthly.update_layout(
-                xaxis_title="Date",
-                yaxis_title="Price",
-                hoverlabel_font=dict(size=16),
-                height=550,  # Adjust the height as needed
-                width=400,    # Adjust the width as needed
-                dragmode='pan'  # Enable pan
-            )
-
-            st.plotly_chart(fig_monthly)
 
             # Update layout to add axis labels
             fig_monthly.update_layout(
@@ -242,7 +230,10 @@ def main():
                 subset=['Percentage Change']
             )
 
-            st.dataframe(df_weekly_styled, width=320, height=385)
+            st.table(df_weekly_styled)
+
+
+           
 
         # Create a line chart for the weekly forecast in col2
         with col2:
@@ -251,11 +242,11 @@ def main():
             fig_weekly.add_trace(go.Scatter(
                 x=df_weekly.index,
                 y=df_weekly['Price(per kg)'],
-                mode='lines+markers',  # Add markers to the line
+                mode='lines',
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
                               "<b>Price:</b> ₱%{y:.2f}<br>"
-                            "<b>Percentage Change:</b> %{customdata}<br>",
+                              "<b>Percentage Change:</b> %{customdata}<br>",
                 customdata=df_weekly['Percentage Change'],
                 hoverlabel_font_color=['green' if val > 0 else 'red' for val in df_weekly['Price(per kg)'].pct_change()],
             ))
