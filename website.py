@@ -180,7 +180,7 @@ def main():
             fig_monthly.add_trace(go.Scatter(
                 x=df_monthly.index,
                 y=df_monthly['Price(per kg)'],
-                mode='lines+markers
+                mode='lines+markers',
                 ',
                 name='',
                 hovertemplate="<b>Date:</b> %{x|%Y-%m-%d}<br>"
